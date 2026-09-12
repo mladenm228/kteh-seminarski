@@ -10,6 +10,20 @@ export const CATEGORY_LABELS: Record<PlantCategory, string> = {
 
 export type CareLevel = 'lako' | 'srednje' | 'zahtevno';
 
+export const CARE_LEVEL_LABELS: Record<CareLevel, string> = {
+  lako: 'Lako za negu',
+  srednje: 'Srednje zahtevno',
+  zahtevno: 'Zahtevna nega',
+};
+
+export type SunlightLevel = 'puno-sunce' | 'delimicna-senka' | 'senka';
+
+export const SUNLIGHT_LABELS: Record<SunlightLevel, string> = {
+  'puno-sunce': 'Puno sunca',
+  'delimicna-senka': 'Delimična senka',
+  senka: 'Senka',
+};
+
 export interface IPlant {
   id: string;
   name: string;
@@ -23,4 +37,5 @@ export interface IPlant {
   careLevel: CareLevel;
   light: string;
   watering: string;
+  sunlightLevel?: SunlightLevel;
 }

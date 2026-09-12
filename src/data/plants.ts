@@ -15,6 +15,7 @@ export const plants: IPlant[] = [
     careLevel: 'lako',
     light: 'Srednje do jako svetlo, bez direktnog sunca',
     watering: '1x nedeljno',
+    sunlightLevel: 'delimicna-senka',
   },
   {
     id: 'fikus-lyrata',
@@ -29,6 +30,7 @@ export const plants: IPlant[] = [
     careLevel: 'srednje',
     light: 'Puno indirektne svetlosti',
     watering: '1x nedeljno',
+    sunlightLevel: 'delimicna-senka',
   },
   {
     id: 'orhideja-phalaenopsis',
@@ -43,6 +45,7 @@ export const plants: IPlant[] = [
     careLevel: 'srednje',
     light: 'Difuzno svetlo, bez direktnog sunca',
     watering: 'Svakih 7-10 dana',
+    sunlightLevel: 'senka',
   },
   {
     id: 'brsljan',
@@ -57,6 +60,7 @@ export const plants: IPlant[] = [
     careLevel: 'lako',
     light: 'Malo do srednje svetla',
     watering: '2x nedeljno',
+    sunlightLevel: 'senka',
   },
   {
     id: 'lavanda',
@@ -71,6 +75,7 @@ export const plants: IPlant[] = [
     careLevel: 'lako',
     light: 'Puno direktnog sunca',
     watering: '1x nedeljno',
+    sunlightLevel: 'puno-sunce',
   },
   {
     id: 'ruzmarin',
@@ -85,6 +90,7 @@ export const plants: IPlant[] = [
     careLevel: 'lako',
     light: 'Puno sunca',
     watering: '1x nedeljno',
+    sunlightLevel: 'puno-sunce',
   },
   {
     id: 'petunija',
@@ -99,6 +105,7 @@ export const plants: IPlant[] = [
     careLevel: 'lako',
     light: 'Puno sunca',
     watering: '2-3x nedeljno',
+    sunlightLevel: 'puno-sunce',
   },
   {
     id: 'hortenzija',
@@ -113,6 +120,7 @@ export const plants: IPlant[] = [
     careLevel: 'srednje',
     light: 'Polusenka',
     watering: '2x nedeljno',
+    sunlightLevel: 'delimicna-senka',
   },
   {
     id: 'echeveria',
@@ -127,6 +135,7 @@ export const plants: IPlant[] = [
     careLevel: 'lako',
     light: 'Puno svetla',
     watering: 'Svake 2 nedelje',
+    sunlightLevel: 'puno-sunce',
   },
   {
     id: 'kaktus-zlatna-loptica',
@@ -141,6 +150,7 @@ export const plants: IPlant[] = [
     careLevel: 'lako',
     light: 'Puno direktnog sunca',
     watering: 'Svake 3 nedelje',
+    sunlightLevel: 'puno-sunce',
   },
   {
     id: 'aloja-vera',
@@ -155,6 +165,7 @@ export const plants: IPlant[] = [
     careLevel: 'lako',
     light: 'Svetlo do puno sunca',
     watering: 'Svake 2 nedelje',
+    sunlightLevel: 'puno-sunce',
   },
   {
     id: 'sadnica-paradajza',
@@ -169,6 +180,7 @@ export const plants: IPlant[] = [
     careLevel: 'srednje',
     light: 'Puno sunca',
     watering: 'Svakodnevno',
+    sunlightLevel: 'puno-sunce',
   },
   {
     id: 'sadnica-jagode',
@@ -183,6 +195,7 @@ export const plants: IPlant[] = [
     careLevel: 'lako',
     light: 'Puno sunca',
     watering: '3x nedeljno',
+    sunlightLevel: 'puno-sunce',
   },
   {
     id: 'sadnica-bosiljka',
@@ -197,6 +210,7 @@ export const plants: IPlant[] = [
     careLevel: 'lako',
     light: 'Puno sunca',
     watering: 'Svakodnevno',
+    sunlightLevel: 'puno-sunce',
   },
   {
     id: 'baštenske-makaze',
