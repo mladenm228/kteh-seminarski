@@ -128,8 +128,83 @@
   font-size: 0.85rem;
 }
 
+.plant-detail__login-hint {
+  color: var(--color-accent);
+  font-size: 0.85rem;
+  text-decoration: underline;
+  align-self: center;
+}
+
+.plant-detail__plan-form {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-top: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.plant-detail__plan-form label {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+.plant-detail__plan-form input {
+  padding: 0.4rem 0.6rem;
+  border-radius: 8px;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text);
+}
+
+.plant-detail__species-info {
+  margin-top: 1.2rem;
+}
+
+.plant-detail__species-info h3 {
+  font-size: 0.95rem;
+  margin-bottom: 0.6rem;
+}
+
+.plant-detail__species-card {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.plant-detail__species-card img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.plant-detail__species-card p {
+  margin: 0.15rem 0;
+  font-size: 0.9rem;
+}
+
+.plant-detail__species-name {
+  font-size: 1rem;
+}
+
+.plant-detail__muted {
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+  margin: 0;
+}
+
 @media (max-width: 800px) {
   .plant-detail__main {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .plant-detail__facts {
+    grid-template-columns: 1fr;
+  }
+
+  .plant-detail__species-card {
+    flex-direction: column;
   }
 }

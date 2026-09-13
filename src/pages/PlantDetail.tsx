@@ -5,11 +5,15 @@ import { CATEGORY_LABELS, type IPlant } from '../models/Plant';
 import { StarRating } from '../components/StarRating';
 import { Button } from '../components/Button';
 import { PlantCard } from '../components/PlantCard';
+import { WateringAdvice } from '../components/WateringAdvice';
 import { useCart } from '../context/CartContext';
 import { useFavorites } from '../hooks/useFavorites';
 import { useNotification } from '../context/NotificationContext';
 import { useRecentlyViewed } from '../hooks/useRecentlyViewed';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
+import { usePlantSpeciesInfo } from '../hooks/usePlantSpeciesInfo';
+import { usePlantingPlan } from '../hooks/usePlantingPlan';
+import { useAuth } from '../context/AuthContext';
 import './PlantDetail.css';
 
 export function PlantDetail() {
@@ -22,8 +26,13 @@ export function PlantDetail() {
   const { addToCart } = useCart();
   const { isFavorite, toggleFavorite } = useFavorites();
   const { notify } = useNotification();
+  const { user } = useAuth();
   const recentIds = useRecentlyViewed(plant?.id);
   const [quantity, setQuantity] = useState(1);
+  const { species, loading: speciesLoading, error: speciesError } = usePlantSpeciesInfo(plant?.name);
+  const { addToPlan, removeFromPlan, isInPlan } = usePlantingPlan();
+  const [planDate, setPlanDate] = useState('');
+  const [showPlanForm, setShowPlanForm] = useState(false);
 
   if (!plant) {
     return (
@@ -109,9 +118,77 @@ export function PlantDetail() {
             <Button variant="secondary" onClick={() => toggleFavorite(plant.id)}>
               {isFavorite(plant.id) ? '❤ U omiljenima' : '🤍 Dodaj u omiljene'}
             </Button>
+
+            {user ? (
+              isInPlan(plant.id) ? (
+                <Button variant="ghost" onClick={() => removeFromPlan(plant.id)}>
+                  ✅ U planu sadnje — ukloni
+                </Button>
+              ) : (
+                <Button variant="ghost" onClick={() => setShowPlanForm((open) => !open)}>
+                  📅 Dodaj u plan sadnje
+                </Button>
+              )
+            ) : (
+              <Link to="/prijava" className="plant-detail__login-hint">
+                Prijavite se za plan sadnje
+              </Link>
+            )}
           </div>
+
+          {showPlanForm && !isInPlan(plant.id) && (
+            <form
+              className="plant-detail__plan-form"
+              onSubmit={(event) => {
+                event.preventDefault();
+                if (!planDate) return;
+                addToPlan(plant.id, planDate, `Planirana sadnja: ${plant.name}`);
+                notify(`${plant.name} je dodata u plan sadnje.`);
+                setShowPlanForm(false);
+                setPlanDate('');
+              }}
+            >
+              <label htmlFor="plan-date">Ciljni datum sadnje</label>
+              <input
+                id="plan-date"
+                type="date"
+                value={planDate}
+                onChange={(event) => setPlanDate(event.target.value)}
+                required
+              />
+              <Button type="submit">Sačuvaj</Button>
+            </form>
+          )}
         </div>
       </div>
+
+      <section className="plant-detail__section">
+        <WateringAdvice />
+
+        <div className="plant-detail__species-info">
+          <h3>Podaci sa Perenual API-ja</h3>
+          {speciesLoading && <p className="plant-detail__muted">Učitavanje podataka o vrsti…</p>}
+          {speciesError && <p className="plant-detail__muted">{speciesError}</p>}
+          {!speciesLoading && !speciesError && !species && (
+            <p className="plant-detail__muted">
+              Podaci trenutno nisu dostupni (nedostaje API ključ ili vrsta nije pronađena).
+            </p>
+          )}
+          {species && (
+            <div className="plant-detail__species-card">
+              {species.imageUrl && <img src={species.imageUrl} alt={species.commonName} />}
+              <div>
+                <p className="plant-detail__species-name">
+                  <em>{species.scientificName}</em>
+                </p>
+                <p>Ciklus: {species.cycle}</p>
+                <p>Zalivanje (API): {species.watering}</p>
+                {species.sunlight.length > 0 && <p>Osunčanost (API): {species.sunlight.join(', ')}</p>}
+              </div>
+            </div>
+          )}
+        </div>
+      </section>
 
       {related.length > 0 && (
         <section className="plant-detail__section">
