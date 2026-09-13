@@ -1,0 +1,93 @@
+.planting-plan {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 3rem;
+}
+
+.planting-plan--empty {
+  max-width: 1180px;
+  text-align: center;
+  padding: 4rem 1.5rem;
+}
+
+.planting-plan--empty p {
+  color: var(--color-text-muted);
+  margin-bottom: 1.5rem;
+}
+
+.planting-plan__summary {
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+}
+
+.planting-plan__section {
+  margin-bottom: 2rem;
+}
+
+.planting-plan__section h2 {
+  font-size: 1rem;
+  margin-bottom: 0.8rem;
+}
+
+.planting-plan__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.planting-plan__item {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.9rem 1.1rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+}
+
+.planting-plan__item.is-overdue {
+  border-color: var(--color-danger);
+}
+
+.planting-plan__plant {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--color-text);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.planting-plan__date {
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+}
+
+.planting-plan__note {
+  grid-column: 1 / -1;
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+}
+
+.planting-plan__remove {
+  border: 1px solid var(--color-border);
+  background: none;
+  color: var(--color-danger);
+  border-radius: 999px;
+  padding: 0.3rem 0.8rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+@media (max-width: 640px) {
+  .planting-plan__item {
+    grid-template-columns: 1fr;
+    align-items: flex-start;
+  }
+}

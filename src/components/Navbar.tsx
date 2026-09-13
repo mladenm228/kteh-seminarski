@@ -9,6 +9,7 @@ const links = [
   { to: '/', label: 'Početna' },
   { to: '/katalog', label: 'Katalog' },
   { to: '/omiljene', label: 'Omiljene' },
+  { to: '/plan-sadnje', label: 'Plan sadnje' },
   { to: '/o-nama', label: 'O nama' },
   { to: '/kontakt', label: 'Kontakt' },
 ];

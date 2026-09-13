@@ -6,6 +6,7 @@ import { Catalog } from './pages/Catalog';
 import { PlantDetail } from './pages/PlantDetail';
 import { Cart } from './pages/Cart';
 import { Favorites } from './pages/Favorites';
+import { PlantingPlan } from './pages/PlantingPlan';
 import { Contact } from './pages/Contact';
 import { Login } from './pages/Login';
 import { About } from './pages/About';
@@ -33,6 +34,14 @@ export default function App() {
                     element={
                       <ProtectedRoute>
                         <Favorites />
+                      </ProtectedRoute>
+                    }
+                  />
+                  <Route
+                    path="plan-sadnje"
+                    element={
+                      <ProtectedRoute>
+                        <PlantingPlan />
                       </ProtectedRoute>
                     }
                   />
